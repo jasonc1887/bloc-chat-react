@@ -21,7 +21,8 @@ class App extends Component {
         <header className="App-header">
         </header>
         <main>
-          <RoomList />
+          <RoomList
+            firebase={firebase} />
         </main>
       </div>
     );
