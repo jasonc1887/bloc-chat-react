@@ -12,26 +12,26 @@ class RoomList extends Component {
 
     this.roomsRef = this.props.firebase.database().ref('rooms');
 
-  };
+    };
 
-componentDidMount() {
+  componentDidMount() {
     this.roomsRef.on('child_added', snapshot => {
     const room = snapshot.val();
     room.key = snapshot.key;
     this.setState({ rooms: this.state.rooms.concat( room ) })
- });
-};
+    });
+  };
 
-handleChange(e) {
-  this.setState({ newRoomName: e.target.value })
-};
+  handleChange(e) {
+    this.setState({ newRoomName: e.target.value })
+  };
 
-createRoom(e) {
-  e.preventDefault();
-  if (!this.state.newRoomName) {return}
-  const newRoom = { rooms: this.state.newRoomName };
-  this.setState({ rooms: [...this.state.rooms, newRoom], newRoomName: '' });
-};
+  createRoom(e) {
+    e.preventDefault();
+    if (!this.state.newRoomName) {return}
+    this.roomsRef.push({ name: this.state.newRoomName });
+    this.setState({newRoomName: ''});
+  };
 
 render() {
   return (
