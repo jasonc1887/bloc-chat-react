@@ -6,6 +6,7 @@ class RoomList extends Component {
 
     this.state = {
       rooms: [],
+      activeRoom: [0],
 
       newRoomName: ''
     };
@@ -40,7 +41,9 @@ render() {
         <tbody>
           { this.state.rooms.map ( (room, index) =>
             <tr>
-              <td>{room.name}</td>
+              <td onClick={() => this.props.handleClick()}
+                  isClicked={this.props.isClicked}
+              >{room.name}</td>
             </tr>
            )
           }

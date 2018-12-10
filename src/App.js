@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList'
+import MessageList from './components/MessageList'
 
 var config = {
   apiKey: "AIzaSyC3hdT7DZgj0H3jaQWgUTOKODgQcPfyHyc",
@@ -15,6 +16,26 @@ var config = {
 firebase.initializeApp(config);
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      rooms: [],
+      activeRoom: [],
+    }
+
+  };
+
+  handleClick(index) {
+    const newRoom = index;
+    this.setState({
+      activeRoom: newRoom
+    });
+    console.log("room clicked");
+    console.log(this.state.activeRoom);
+  }
+
+
   render() {
     return (
       <div className="App">
@@ -22,7 +43,10 @@ class App extends Component {
         </header>
         <main>
           <RoomList
-            firebase={firebase} />
+            firebase={firebase}
+            handleClick={() => this.handleClick()}
+            isClicked={this.state.isClicked}
+            />
         </main>
       </div>
     );
