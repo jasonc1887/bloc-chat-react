@@ -21,26 +21,22 @@ class App extends Component {
 
     this.state = {
       activeRoomId: [],
-      message: [],
+      isClicked: false,
 
     }
 
   };
 
-  handleClick(index) {
-    const newRoom = index;
+  handleClick(key) {
+    const newRoom = key;
     this.setState({
-      activeRoom: newRoom
+      activeRoom: newRoom,
+      isClicked: true
     });
     console.log("room clicked");
     console.log(this.state.activeRoom);
+    console.log(this.state.messages);
   }
-
-  displayMessage() {
-    const message = snapshot.val();
-    return message;
-  }
-
 
   render() {
     return (
@@ -56,6 +52,7 @@ class App extends Component {
           <MessageList
               firebase={firebase}
               activeRoom={this.state.activeRoom}
+              handleClick={this.handleClick}
             />
         </main>
       </div>

@@ -43,8 +43,7 @@ render() {
           { this.state.rooms.map ( (room, index) =>
             <tr>
               <td
-              onClick={() => this.props.handleClick(room.name, room.key)}
-              onClick={() => this.props.displayMessage(message)}
+              onClick={() => this.props.handleClick(room.key)}
               >{room.name}</td>
             </tr>
            )

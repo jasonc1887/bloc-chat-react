@@ -14,7 +14,7 @@ class MessageList extends Component {
 
     }
 
-  ComponentDidMount() {
+  componentDidMount() {
     this.messagesRef.on('child_added', snapshot => {
       const message = snapshot.val();
       message.key = snapshot.key;
@@ -22,14 +22,13 @@ class MessageList extends Component {
     });
   }
 
-
   render(){
     return(
       <section className="message-list">
-        <div className="messages-per-room">
+        <div className="messages-per-room" handleClick={this.props.handleClick}>
           {this.state.messages.filter((message) => {
-            return (this.props.activeRoomId == message.RoomId);
-          }).map((message) =>
+            if (this.state.isClicked) {
+            }}).map((message) =>
         <div>
           <p id = "username">{message.username}</p>
           <p id = "time">{message.sentAt}</p>
