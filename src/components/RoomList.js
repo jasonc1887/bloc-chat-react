@@ -34,6 +34,7 @@ class RoomList extends Component {
     this.setState({newRoomName: ''});
   };
 
+
 render() {
   return (
     <div className="RoomList">
@@ -41,7 +42,9 @@ render() {
         <tbody>
           { this.state.rooms.map ( (room, index) =>
             <tr>
-              <td onClick={() => this.props.handleClick(room.name, room.key)}
+              <td
+              onClick={() => this.props.handleClick(room.name, room.key)}
+              onClick={() => this.props.displayMessage(message)}
               >{room.name}</td>
             </tr>
            )

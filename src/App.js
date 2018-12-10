@@ -21,6 +21,8 @@ class App extends Component {
 
     this.state = {
       activeRoomId: [],
+      message: [],
+
     }
 
   };
@@ -34,6 +36,11 @@ class App extends Component {
     console.log(this.state.activeRoom);
   }
 
+  displayMessage() {
+    const message = snapshot.val();
+    return message;
+  }
+
 
   render() {
     return (
@@ -44,6 +51,7 @@ class App extends Component {
           <RoomList
             firebase={firebase}
             handleClick={(room, roomId) => {this.handleClick(room, roomId)}}
+            displayMessage={this.displayMessage}
             />
           <MessageList
               firebase={firebase}
