@@ -20,8 +20,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      rooms: [],
-      activeRoom: [],
+      activeRoomId: [],
     }
 
   };
@@ -44,8 +43,11 @@ class App extends Component {
         <main>
           <RoomList
             firebase={firebase}
-            handleClick={() => this.handleClick()}
-            isClicked={this.state.isClicked}
+            handleClick={(room, roomId) => {this.handleClick(room, roomId)}}
+            />
+          <MessageList
+              firebase={firebase}
+              activeRoom={this.state.activeRoom}
             />
         </main>
       </div>
