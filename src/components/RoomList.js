@@ -43,7 +43,7 @@ render() {
           { this.state.rooms.map ( (room, index) =>
             <tr>
               <td
-              onClick={() => this.props.handleClick(room.key)}
+              onClick={() => this.props.setActiveRoom(room.key)}
               >{room.name}</td>
             </tr>
            )

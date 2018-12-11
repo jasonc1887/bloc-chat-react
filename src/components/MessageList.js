@@ -25,12 +25,12 @@ class MessageList extends Component {
   render(){
     return(
       <section className="message-list">
-        <div className="messages-per-room" handleClick={this.props.handleClick}>
+        <div className="messages-per-room">
           {this.state.messages.filter((message) => {
 
             console.log('MESSAGE ROOM ID:', message.roomId)
-            console.log('ACTIVE ROOM ID:', this.props.activeRoom.key)
-            
+            console.log('ACTIVE ROOM ID:', this.props.activeRoom)
+
           if (message.roomId === this.props.activeRoom.key) {
           }}).map((message) =>
         <div>

@@ -24,18 +24,26 @@ class App extends Component {
       activeRoom: [],
       isClicked: false,
       key: [],
+
     }
 
+    this.setActiveRoom = this.setActiveRoom.bind(this)
   };
 
-  handleClick(roomKey) {
-    const newRoom = roomKey;
+  setActiveRoom (roomKey) {
     this.setState({
-      activeRoom: newRoom,
+      activeRoom: roomKey,
       isClicked: true
     });
     console.log("room clicked");
     console.log(this.state.activeRoom);
+  }
+
+  setActiveMessage (messageKey) {
+    this.setState({
+      roomId: messageKey,
+    });
+    console.log(this.state.roomId);
   }
 
   render() {
@@ -45,14 +53,16 @@ class App extends Component {
         </header>
         <main>
           <RoomList
-            firebase={firebase}
-            handleClick={(room, roomId) => {this.handleClick(room, roomId)}}
-            displayMessage={this.displayMessage}
+              firebase={firebase}
+              setActiveRoom={this.setActiveRoom}
+              activeRoom={this.state.activeRoom}
+              displayMessage={this.displayMessage}
             />
           <MessageList
               firebase={firebase}
               activeRoom={this.state.activeRoom}
-              handleClick={this.handleClick}
+              setActiveRoom={this.setActiveRoom}
+              setActiveMessage={this.setActiveMessage}
             />
         </main>
       </div>
