@@ -41,13 +41,6 @@ class App extends Component {
     console.log(this.state.roomId);
   }
 
-  setActiveMessage (messageKey) {
-    this.setState({
-      roomId: messageKey,
-    });
-    console.log(this.state.roomId);
-  }
-
   render() {
     return (
       <div className="App">
@@ -59,14 +52,12 @@ class App extends Component {
               setActiveRoom={this.setActiveRoom}
               activeRoom={this.state.activeRoom}
               roomId={this.state.roomId}
-              displayMessage={this.displayMessage}
             />
           <MessageList
               firebase={firebase}
               activeRoom={this.state.activeRoom}
               roomId={this.state.roomId}
               setActiveRoom={this.setActiveRoom}
-              setActiveMessage={this.setActiveMessage}
             />
         </main>
       </div>
