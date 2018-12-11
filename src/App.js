@@ -21,21 +21,21 @@ class App extends Component {
 
     this.state = {
       activeRoomId: [],
+      activeRoom: [],
       isClicked: false,
-
+      key: [],
     }
 
   };
 
-  handleClick(key) {
-    const newRoom = key;
+  handleClick(roomKey) {
+    const newRoom = roomKey;
     this.setState({
       activeRoom: newRoom,
       isClicked: true
     });
     console.log("room clicked");
     console.log(this.state.activeRoom);
-    console.log(this.state.messages);
   }
 
   render() {

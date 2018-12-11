@@ -27,8 +27,12 @@ class MessageList extends Component {
       <section className="message-list">
         <div className="messages-per-room" handleClick={this.props.handleClick}>
           {this.state.messages.filter((message) => {
-            if (this.state.isClicked) {
-            }}).map((message) =>
+
+            console.log('MESSAGE ROOM ID:', message.roomId)
+            console.log('ACTIVE ROOM ID:', this.props.activeRoom.key)
+            
+          if (message.roomId === this.props.activeRoom.key) {
+          }}).map((message) =>
         <div>
           <p id = "username">{message.username}</p>
           <p id = "time">{message.sentAt}</p>
