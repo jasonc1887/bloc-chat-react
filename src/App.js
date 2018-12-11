@@ -20,7 +20,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      activeRoomId: [],
+      roomId: [],
       activeRoom: [],
       isClicked: false,
       key: [],
@@ -33,10 +33,12 @@ class App extends Component {
   setActiveRoom (roomKey) {
     this.setState({
       activeRoom: roomKey,
+      roomId: roomKey,
       isClicked: true
     });
     console.log("room clicked");
     console.log(this.state.activeRoom);
+    console.log(this.state.roomId);
   }
 
   setActiveMessage (messageKey) {
@@ -56,11 +58,13 @@ class App extends Component {
               firebase={firebase}
               setActiveRoom={this.setActiveRoom}
               activeRoom={this.state.activeRoom}
+              roomId={this.state.roomId}
               displayMessage={this.displayMessage}
             />
           <MessageList
               firebase={firebase}
               activeRoom={this.state.activeRoom}
+              roomId={this.state.roomId}
               setActiveRoom={this.setActiveRoom}
               setActiveMessage={this.setActiveMessage}
             />

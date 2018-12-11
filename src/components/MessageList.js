@@ -31,7 +31,7 @@ class MessageList extends Component {
             console.log('MESSAGE ROOM ID:', message.roomId)
             console.log('ACTIVE ROOM ID:', this.props.activeRoom)
 
-          if (message.roomId === this.props.activeRoom.key) {
+          if (message.roomId === this.props.activeRoom) {
           }}).map((message) =>
         <div>
           <p id = "username">{message.username}</p>
