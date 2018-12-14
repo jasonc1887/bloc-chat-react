@@ -4,6 +4,7 @@ import './App.css';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList'
 import MessageList from './components/MessageList'
+import User from './components/User'
 
 var config = {
   apiKey: "AIzaSyC3hdT7DZgj0H3jaQWgUTOKODgQcPfyHyc",
@@ -25,6 +26,11 @@ class App extends Component {
       isClicked: false,
       key: [],
 
+      currentItem: '',
+      userName: '',
+      items: [],
+      user: null
+
     }
 
     this.setActiveRoom = this.setActiveRoom.bind(this)
@@ -40,6 +46,7 @@ class App extends Component {
     console.log(this.state.activeRoom);
     console.log(this.state.roomId);
   }
+
 
   render() {
     return (
@@ -58,6 +65,10 @@ class App extends Component {
               activeRoom={this.state.activeRoom}
               roomId={this.state.roomId}
               setActiveRoom={this.setActiveRoom}
+            />
+          <User
+              firebase={firebase}
+              user={this.state.user}
             />
         </main>
       </div>
