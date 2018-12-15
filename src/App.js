@@ -21,16 +21,18 @@ class App extends Component {
     super(props);
 
     this.state = {
-      roomId: [],
-      activeRoom: [],
+      roomId: null,
+      activeRoom: null,
       isClicked: false,
-      key: [],
+      key: null,
 
-      currentItem: '',
-      userName: '',
+      currentItem: null,
+      userName: null,
       items: [],
-      user: null
-
+      user: null,
+      username: null,
+      content: null,
+      sentAt: null
     }
 
     this.setActiveRoom = this.setActiveRoom.bind(this)
@@ -65,10 +67,16 @@ class App extends Component {
               activeRoom={this.state.activeRoom}
               roomId={this.state.roomId}
               setActiveRoom={this.setActiveRoom}
+              user={this.state.user}
+              username={this.state.username}
+              content={this.state.content}
+              sentAt={this.state.sentAt}
+
             />
           <User
               firebase={firebase}
               user={this.state.user}
+              username={this.state.username}
             />
         </main>
       </div>

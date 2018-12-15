@@ -7,11 +7,16 @@ class MessageList extends Component {
 
     this.state = {
       messages: [],
-
+      newMessage: '',
+      activeRoom: '',
+      username: '',
+      content: '',
+      sentAt: '',
+      roomId: ''
     };
 
     this.messagesRef = this.props.firebase.database().ref('messages');
-
+    this.createMessage = this.createMessage.bind(this);
     }
 
   componentDidMount() {
@@ -20,6 +25,22 @@ class MessageList extends Component {
       message.key = snapshot.key;
       this.setState({ messages: this.state.messages.concat( message ) })
     });
+  }
+
+  createMessage(e) {
+    e.preventDefault();
+    if (!this.state.newMessage) {return}
+    this.messagesRef.push({
+      content: this.newMessage,
+      roomId: this.activeRoom,
+      sentAt: Date().toLocaleString(),
+      username: this.user
+    });
+    this.setState({newMessage: ''});
+  };
+
+  handleMessage(e) {
+    this.setState({ newMessage: e.target.value });
   }
 
   render(){
@@ -37,9 +58,15 @@ class MessageList extends Component {
               )
           }
         </div>
+        <div>
+          <form onSubmit={ (e) => this.createMessage(e) }>
+            <input type="text" value={ this.state.newMessage } onChange={ (e) => this.handleMessage(e) }/>
+            <input type="submit"/>
+          </form>
+        </div>
       </section>
     );
-  } 
+  }
 }
 
 export default MessageList;
