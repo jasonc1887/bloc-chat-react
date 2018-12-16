@@ -8,11 +8,9 @@ class MessageList extends Component {
     this.state = {
       messages: [],
       newMessage: '',
-      activeRoom: '',
-      username: '',
-      content: '',
-      sentAt: '',
-      roomId: ''
+      user: '',
+      username: ''
+
     };
 
     this.messagesRef = this.props.firebase.database().ref('messages');
@@ -31,10 +29,11 @@ class MessageList extends Component {
     e.preventDefault();
     if (!this.state.newMessage) {return}
     this.messagesRef.push({
-      content: this.newMessage,
-      roomId: this.activeRoom,
+      content: this.state.newMessage,
+      roomId: this.props.activeRoom,
       sentAt: Date().toLocaleString(),
-      username: this.user
+      username: this.props.user ? this.props.user.displayName : "Guest"
+
     });
     this.setState({newMessage: ''});
   };

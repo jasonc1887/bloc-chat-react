@@ -36,6 +36,7 @@ class App extends Component {
     }
 
     this.setActiveRoom = this.setActiveRoom.bind(this)
+    this.updateUser = this.updateUser.bind(this)
   };
 
   setActiveRoom (roomKey) {
@@ -49,6 +50,11 @@ class App extends Component {
     console.log(this.state.roomId);
   }
 
+  updateUser(user) {
+    this.setState({
+      user: user
+    });
+  }
 
   render() {
     return (
@@ -76,7 +82,8 @@ class App extends Component {
           <User
               firebase={firebase}
               user={this.state.user}
-              username={this.state.username}
+              userame={this.state.username}
+              updateUser={this.updateUser}
             />
         </main>
       </div>
