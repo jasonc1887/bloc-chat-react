@@ -33,7 +33,6 @@ class MessageList extends Component {
       roomId: this.props.activeRoom,
       sentAt: Date().toLocaleString(),
       username: this.props.user ? this.props.user.displayName : "Guest"
-
     });
     this.setState({newMessage: ''});
   };

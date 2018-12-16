@@ -27,10 +27,8 @@ class App extends Component {
       key: null,
 
       currentItem: null,
-      userName: null,
       items: [],
       user: null,
-      username: null,
       content: null,
       sentAt: null
     }

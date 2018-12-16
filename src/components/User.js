@@ -17,16 +17,12 @@ class User extends Component {
 
   handleSignIn(){
     const provider = new this.props.firebase.auth.GoogleAuthProvider();
-    this.props.updateUser();
     this.props.firebase.auth().signInWithPopup( provider )
     .then((result) => {
       const user = result.user;
       const username = user.displayName;
-      this.setState({user: user});
+      this.props.updateUser(user);
       this.setState({signedIn: true});
-      this.setState({username: username})
-      console.log(username);
-      console.log(user);
     })
   }
 
@@ -57,7 +53,7 @@ class User extends Component {
           {button}
         </div>
         <p>
-          {this.state.signedIn ? this.state.username : ''}
+          {this.state.signedIn ? this.props.user.displayName : ''}
         </p>
       </div>
     )
